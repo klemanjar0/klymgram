@@ -4,9 +4,10 @@ import { AuthService } from './auth.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../../models/user';
 import { IsUserAlreadyExistConstraint } from '../../decorators/user/isUserExists';
+import { RefreshToken } from '../../models/refreshToken';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([User, RefreshToken])],
   controllers: [AuthController],
   providers: [AuthService, IsUserAlreadyExistConstraint],
   exports: [TypeOrmModule, AuthService, IsUserAlreadyExistConstraint],
